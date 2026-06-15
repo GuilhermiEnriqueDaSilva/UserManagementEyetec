@@ -27,7 +27,6 @@ Aplicativo Android para gerenciamento de usuários (CRUD) com captura de foto ut
 ### 1. Clonar o repositório
 
 **Importante:** Clone em um diretório **sem espaços** na unidade **C:** (exemplo: `C:\AndroidProjects\UserManagement`). Clonar em outras unidades (ex: `B:`) pode causar erros de permissão ou problemas com o FileProvider.
-git clone https://github.com/seu-usuario/user-management-eyetec.git
 
 ### 2. Abrir no Android Studio
 

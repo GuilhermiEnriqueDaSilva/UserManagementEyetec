@@ -7,10 +7,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.usermanagementeyetec.ui.screens.UserFormScreen
+import com.example.usermanagementeyetec.ui.screens.UserListScreen
 import com.example.usermanagementeyetec.ui.theme.UserManagementEyetecTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +22,36 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             UserManagementEyetecTheme {
+                val navController = rememberNavController()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    NavHost(
+                        navController = navController,
+                        startDestination = "user_list"
+                    ) {
+                        composable("user_list") {
+                            UserListScreen(
+                                navController = navController,
+                                padding = innerPadding
+                            )
+                        }
+                        composable("user_form/{userId}") { backStackEntry ->
+                            val userId = backStackEntry.arguments?.getString("userId")?.toLongOrNull()
+                            UserFormScreen(
+                                navController = navController,
+                                userId = userId,
+                                padding = innerPadding
+                            )
+                        }
+                        composable("user_form") {
+                            UserFormScreen(
+                                navController = navController,
+                                userId = null,
+                                padding = innerPadding
+                            )
+                        }
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    UserManagementEyetecTheme {
-        Greeting("Android")
     }
 }

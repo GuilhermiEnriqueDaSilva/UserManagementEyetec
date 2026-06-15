@@ -10,13 +10,6 @@ import java.io.InputStream
 
 object ImageUtils {
 
-    /**
-     * Salva uma imagem do URI no armazenamento interno do app.
-     * @param context Contexto da aplicação.
-     * @param uri URI da imagem selecionada.
-     * @param userId ID do usuário (usado para nomear o arquivo).
-     * @return Caminho absoluto do arquivo salvo ou null em caso de erro.
-     */
     fun saveImageToInternalStorage(context: Context, uri: Uri, userId: Long): String? {
         return try {
             val inputStream: InputStream? = context.contentResolver.openInputStream(uri)
@@ -38,11 +31,6 @@ object ImageUtils {
         }
     }
 
-    /**
-     * Deleta uma imagem do armazenamento interno.
-     * @param context Contexto da aplicação.
-     * @param imagePath Caminho do arquivo a ser deletado.
-     */
     fun deleteImageFromInternalStorage(context: Context, imagePath: String?) {
         imagePath?.let {
             try {

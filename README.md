@@ -91,7 +91,9 @@ O arquivo `res/xml/file_paths.xml` define os caminhos acessíveis para compartil
     <files-path name="temp" path="temp/" />
     <cache-path name="cache" path="." />
 </paths>
-Instruções de Build e Execução
+```
+
+## Instruções de Build e Execução
 Utilize a variante de build app (debug).
 
 A primeira compilação pode levar alguns minutos devido ao download das dependências.

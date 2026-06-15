@@ -9,5 +9,5 @@ data class User(
     val id: Long = 0,
     val name: String,
     val email: String,
-    val photoUri: String? = null  // caminho da foto
+    val photoUri: String? = null  // armazenará o caminho absoluto da imagem
 )

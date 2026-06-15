@@ -34,7 +34,10 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         repository.deleteUser(user)
     }
 
+    suspend fun insertUserAndGetId(user: User): Long = repository.insertUserAndGetId(user)
+
     suspend fun getUserById(id: Long): User? = repository.getUserById(id)
+
 
     // Factory correta para usar com viewModel()
     class Factory(private val application: Application) : ViewModelProvider.Factory {

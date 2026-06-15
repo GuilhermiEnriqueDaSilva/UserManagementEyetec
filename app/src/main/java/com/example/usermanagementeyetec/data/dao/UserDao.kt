@@ -20,4 +20,7 @@ interface UserDao {
 
     @Delete
     suspend fun delete(user: User)
+
+    @Insert
+    suspend fun insertAndGetId(user: User): Long
 }
